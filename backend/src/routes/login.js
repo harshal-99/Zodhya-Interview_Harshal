@@ -4,6 +4,7 @@ import {Router} from 'express'
 
 import UserEntity from "../models/userEntity.js";
 import {body} from "express-validator";
+import {JWT_SECRET} from "../utils/config.js";
 
 const loginRouter = Router()
 
@@ -30,7 +31,7 @@ loginRouter.post('/',
 			id: user._id
 		}
 
-		const token = jwt.sign(userForToken, process.env.SECRET, {expiresIn: 60 * 60})
+		const token = jwt.sign(userForToken, JWT_SECRET, {expiresIn: 60 * 60})
 		response
 			.status(200)
 			.send({token, username})

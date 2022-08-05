@@ -18,8 +18,7 @@ userRouter.post('/',
 
 
 		const saltRounds = 10
-		const passwordHash = 10
-		await bcrypt.hash(password, saltRounds)
+		const passwordHash = await bcrypt.hash(password, saltRounds)
 
 		const user = new UserEntity({
 			username,
@@ -28,7 +27,7 @@ userRouter.post('/',
 
 		const savedUser = await user.save()
 
-		response.json(savedUser)
+		response.json({username: savedUser.username, id: savedUser.id})
 	}
 )
 

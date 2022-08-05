@@ -7,7 +7,12 @@ import mongoose from "mongoose";
 import {MONGODB_URI, PORT} from "./utils/config.js";
 import userRouter from "./routes/user.js";
 import loginRouter from "./routes/login.js";
-import {errorHandler, tokenExtractor, unknownEndpoint} from "./utils/middleware.js";
+import {
+	errorHandler
+	, tokenExtractor, tokenValidator, unknownEndpoint
+} from "./utils/middleware.js";
+import searchRouter from "./routes/search.js";
+import tweetsRouter from "./routes/tweets.js";
 
 
 const app = express()
@@ -28,9 +33,12 @@ app.use(cors())
 app.use(morgan('dev'))
 
 app.use(tokenExtractor)
+app.use(tokenValidator)
 
 app.use('/api/signup', userRouter)
 app.use('/api/login', loginRouter)
+app.use('/api/search', searchRouter)
+app.use('/api/tweets', tweetsRouter)
 
 
 app.use(unknownEndpoint)

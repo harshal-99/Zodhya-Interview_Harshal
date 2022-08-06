@@ -32,6 +32,7 @@ app.use(express.json())
 app.use(cors())
 app.use(morgan('dev'))
 
+app.use(express.static('../frontend/build'))
 app.use('/api/signup', userRouter)
 app.use('/api/login', loginRouter)
 

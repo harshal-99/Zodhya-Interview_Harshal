@@ -8,6 +8,7 @@ const Tweets = () => {
 	const auth = useAuth()
 	const [location, setLocation] = useState(null)
 	const [tweets, setTweets] = useState([])
+
 	useEffect(() => {
 		navigator.geolocation.getCurrentPosition(pos => {
 			setLocation(pos.coords)
@@ -15,9 +16,10 @@ const Tweets = () => {
 	}, [])
 
 	useEffect(() => {
-		if (!location || !auth?.token) return
+		if (!location || !auth?.user?.token) return
 		const controller = new AbortController()
-		TwitterService.getTweets(location.latitude, location.longitude, setTweets, controller)
+		TwitterService
+			.getTweets(location.latitude, location.longitude, setTweets, controller, auth.user.token)
 			.catch(e => console.log(e))
 		return () => controller.abort()
 	}, [location, auth])
@@ -33,6 +35,7 @@ const Tweets = () => {
 	if (!tweets || tweets.length === 0) {
 		return <div>Loading tweets</div>
 	}
+
 	return (
 		<div className={classes.tweets}>
 			{tweets &&

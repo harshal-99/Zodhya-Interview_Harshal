@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const getTweets = async (lat, lon, callback, controller) => {
+const getTweets = async (lat, lon, callback, controller, token) => {
 	const response = await axios.post('/api/tweets', {lat, lon}, {
 		headers: {
-			'Authorization': `Bearer ${JSON.parse(localStorage.getItem('user')).token}`
+			'Authorization': `Bearer ${token}`
 		},
 		signal: controller.signal
 	})

@@ -7,6 +7,7 @@ import WeatherData from "./WeatherData";
 const Weather = () => {
 	const [weatherData, setWeatherData] = useState([]);
 	const [sourceCity, setSourceCity] = useState("");
+	// eslint-disable-next-line
 	const [destinationCity, setDestinationCity] = useState('')
 
 	const handleSourceChange = (city) => {

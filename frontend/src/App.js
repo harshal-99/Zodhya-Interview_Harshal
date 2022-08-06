@@ -12,6 +12,7 @@ const App = () => {
 
 	useEffect(() => {
 		auth.getCredentialsFromLocalStorage()
+		// eslint-disable-next-line
 	}, [])
 
 	return (

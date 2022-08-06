@@ -1,0 +1,10 @@
+nav {
+	display: flex;
+	justify-content: space-between;
+	gap: 0.5rem;
+}
+
+.link a {
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+}

@@ -30,7 +30,6 @@ searchRouter.post('/',
 		const {lat, lon, date} = request.body
 
 		const weatherData = await getCityWeather(lat, lon)
-		console.log(weatherData)
 		return response.json(weatherData)
 	})
 

@@ -32,11 +32,12 @@ app.use(express.json())
 app.use(cors())
 app.use(morgan('dev'))
 
+app.use('/api/signup', userRouter)
+app.use('/api/login', loginRouter)
+
 app.use(tokenExtractor)
 app.use(tokenValidator)
 
-app.use('/api/signup', userRouter)
-app.use('/api/login', loginRouter)
 app.use('/api/search', searchRouter)
 app.use('/api/tweets', tweetsRouter)
 

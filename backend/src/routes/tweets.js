@@ -14,7 +14,7 @@ tweetsRouter.post('/',
 		}
 
 		const {lat, lon} = request.body
-		const cityWeather = await getCityWeather(lat, lon, 1)
+		const cityWeather = await getCityWeather(lat, lon, 10)
 		const cityName = cityWeather.city.name
 
 		const tweets = await getTweets(cityName)

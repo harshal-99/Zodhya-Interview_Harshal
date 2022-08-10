@@ -2,12 +2,20 @@
 
 ## How to Run
 
+### Frontend
+
 ```shell
-$ cd frontend && npm install
-$ cd ..
-$ cd backend && npm install && npm start
-$ cd ..
-$ cd frontend && npm start
+$ cd frontend
+$ npm install
+$ npm run start
+```
+
+### Backend
+
+```shell
+$ cd backend 
+$ npm install 
+$ npm run start
 ```
 
 ## Required environment variables
